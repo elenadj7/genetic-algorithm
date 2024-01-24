@@ -1,1 +1,1 @@
-﻿Console.WriteLine("Hello, World!");
+﻿using genetic_algorithm.gen;
