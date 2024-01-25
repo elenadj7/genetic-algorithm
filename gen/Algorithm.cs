@@ -37,12 +37,13 @@
                     }
                 }
 
-
-                foreach(Individual child in nextGen)
+                for(int i = 0; i < nextGen.Count; i++)
                 {
+                    Individual child = nextGen[i];
                     if(random.NextDouble() < mutationProb)
                     {
                         Individual mutated = child.ExecuteMutation();
+                        nextGen[i] = mutated;
                         current.IncrementMutationCount();
                     }
                 }
