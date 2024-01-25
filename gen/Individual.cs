@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace genetic_algorithm.gen
+﻿namespace genetic_algorithm.gen
 {
     public class Individual
     {
@@ -54,7 +52,7 @@ namespace genetic_algorithm.gen
             double result = 1.25d * Math.Pow(1 - phenotypeX, 2) * Math.Pow(Math.E, -Math.Pow(phenotypeX, 2) - Math.Pow(phenotypeY + 1, 2)) 
                 - 10 * (phenotypeX - Math.Pow(phenotypeX, 5) - Math.Pow(phenotypeY, 5)) * Math.Pow(Math.E, -(Math.Pow(phenotypeX, 2) + Math.Pow(phenotypeY, 2)/0.9d))
                 -0.2d * Math.Pow(Math.E, -(Math.Pow(phenotypeX + 1, 2) - Math.Pow(phenotypeY, 2)));
-            return result;
+            return result <= 0 ? 0 : result;
         }
 
         public static List<int> Mutate(List<int> chromosome) //random bit inversion
@@ -128,16 +126,6 @@ namespace genetic_algorithm.gen
         public List <int> GetChromosomeY()
         {
             return chromosomeY;
-        }
-
-        public void print()
-        {
-            Console.Out.WriteLine("ch x: "+string.Join("", chromosomeX));
-            Console.Out.WriteLine("ch y: "+string.Join("", chromosomeY));
-            Console.Out.WriteLine("ph x: "+phenotypeX);
-            Console.Out.WriteLine("ph y: "+phenotypeY);
-            Console.Out.WriteLine("f: "+fitness);
-            Console.Out.WriteLine("----------------------------------");
         }
     }
 }
